@@ -4,18 +4,28 @@
 
 # LOCAL MACHINE user parameters
 BCBIO_TOOLS_PATH="$HOME/AWS_Setup/tools/bin" # path to bcbio tools directory
-AWS_KEYS_PATH="$HOME/AWS_Setup/scripts/aws_keypairs/" # path to aws public/private keys
+TMP_DIR="$HOME/AWS_Setup/TMP/" # directory to store launch configs and logs
 
 # CLUSTER (e.g. aquila) parameters
 CLUSTER_USERNAME="erevkov" # cluster username
-AWS_KEYS_CLUSTER_PATH="$HOME/aws_keypairs/" # path to aws public/private keys
+CLUSTER_DOWNLOAD_METHOD="ionode.gis.a-star.edu.sg"
 
-# instance parameters
+# default launch parameters / user-specified launch parameters
 BCBIO_AV_ZONE="ap-southeast-1b" # bcbio availability zone
-INSTANCE_TYPE="m4.2xlarge" # aws instance type
-SPOT_PRICE="null" # aws instance spot price
+INSTANCE_TYPE="m4.2xlarge" # ec2 instance type
 SPOT_IN_USE="no" # is spot instance used?
-VOLUME_NAME="skandlab_bcbio" # aws volume name
-SNAPSHOT_NAME="bcbio*" # name of the snapshot with bcbio
-INSTANCE_NAME="skandlab*" # aws instance name
+NO_ANALYSIS="False" # do not launch the analysis?
+NO_MONITOR="False" # do not start the cron job?
+SNAPSHOT_NAME="bcbio_clean_install_v.1.0.4" # name tag of the snapshot with bcbio installation
 PROJECT_NAME="skandlab_project" # project name
+INSTANCE_NAME="${PROJECT_NAME}_instance"
+BCBIO_VOLUME_NAME="${PROJECT_NAME}_bcbio" # ebs volume name tag, contains bcbio installation
+BCBIO_VOLUME_TYPE="magnetic" # ebs volume type, contains bcbio installation
+BCBIO_VOLUME_SIZE="70" # size in GB (minimum=bcbio snapshot size)
+ANALYSIS_VOLUME_NAME="${PROJECT_NAME}_analysis" # ebs volume name tag, is used as a working volume (/tmp directory)
+ANALYSIS_VOLUME_TYPE="gp2" # ebs volume type, is used as a working volume (/tmp directory)
+ANALYSIS_VOLUME_SIZE="150" # size in GB (minimum=bcbio snapshot size)
+CRON_OUTPUT="$HOME/AWS_Setup/scripts/logs/cronjob.log" # where to output "echo" commands of the cron job
+
+# optional parameters
+SPOT_PRICE="null" # ec2 instance spot price
