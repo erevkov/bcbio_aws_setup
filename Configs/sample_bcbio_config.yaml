@@ -1,0 +1,56 @@
+# SNV + SV calling
+---
+details:
+-  algorithm:
+     platform: illumina
+     quality_format: standard
+     aligner: bwa
+     save_diskspace: true
+     tools_off: fastqc
+     bam_clean: false
+     bam_sort: false
+     mark_duplicates: true
+     recalibrate: false
+     realign: gatk
+     variant_regions: /mnt/projects/huangwt/wgs/bcbio_v1.0.4/aws_test/variant_regions/SeqCap_target_1000genome.bed
+     remove_lcr: false
+     variantcaller: [mutect2,freebayes,vardict,varscan]
+     svcaller: [lumpy,manta,cnvkit]
+     indelcaller: false
+     ensemble:
+       numpass: 2
+   analysis: variant2
+   description: GIS-A144-T-S32-E-N
+   files: /mnt/projects/huangwt/wgs/bcbio_v1.0.4/aws_test/data_2/HS004-PE-R00121_BC6KTUANXX.human_g1k_v37.CHL506_reAligned_reCal.bam
+   genome_build: GRCh37
+   metadata:
+     batch: GIS-A144-T-S32-E
+     phenotype: normal
+-  algorithm:
+     platform: illumina
+     quality_format: standard
+     aligner: bwa
+     save_diskspace: true
+     tools_off: fastqc
+     bam_clean: false
+     bam_sort: false
+     mark_duplicates: true
+     recalibrate: false
+     realign: gatk
+     variant_regions: /mnt/projects/huangwt/wgs/bcbio_v1.0.4/aws_test/variant_regions/SeqCap_target_1000genome.bed
+     remove_lcr: false
+     variantcaller: [mutect2,freebayes,vardict,varscan]
+     svcaller: [lumpy,manta,cnvkit]
+     indelcaller: false
+     ensemble:
+       numpass: 2
+   analysis: variant2
+   description: GIS-A144-T-S32-E-T
+   files: /mnt/projects/huangwt/wgs/bcbio_v1.0.4/aws_test/data_1/HS004-PE-R00121_BC6KTUANXX.human_g1k_v37.CHL481_reAligned_reCal.bam
+   metadata:
+     batch: GIS-A144-T-S32-E
+     phenotype: tumor
+fc_date: '2015-07-31'
+fc_name: GIS-A144-T-S32-E
+upload:
+ dir: /mnt/projects/huangwt/wgs/bcbio_v1.0.4/aws_test/bcbio_final
